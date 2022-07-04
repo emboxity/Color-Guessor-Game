@@ -37,7 +37,7 @@ function init() {
 init();
 
 function reset(){
-
+    tries = 3;
     answer = colorPicker();
     color.textContent = answer;
     genSquareColors();
@@ -73,17 +73,21 @@ function setColor(){
 
 function colorSquares(){
     for(let i = 0; i < squares.length; i++){
-        squares[i].addEventListener("click", function(){
+        squares[i].onclick = function(){
             var clicked = this.style.backgroundColor;
             if(clicked === answer){
                 alert("You won!");
                 reset();
-                
-            } else {
+                this.style.backgroundColor = setColor();
+             } else {
                 this.style.backgroundColor = "#FFFFFF";
                 tries--;
             }
-        });
+            if(tries === 0){
+                alert("You lost!");
+                reset();
+            }
+        };
 
     }
 }
