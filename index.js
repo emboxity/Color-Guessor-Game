@@ -1,9 +1,12 @@
 let color = document.getElementById("color");
-var squares = document.querySelectorAll(".square");
+let t = document.getElementById("tries");
+let squares = document.querySelectorAll(".square");
+let btn = document.getElementById('mode');
 let answer;
 let arr = [];
 let array = [];
-let tries = 3;
+let easy = true;
+let tries = 4;
 
 function colorPicker() {
     // displays the only correct color
@@ -16,6 +19,7 @@ function colorPicker() {
     result = "rgb(" + num1 + num2 + num3 + ")";
     return result;
 }
+
 function genWrong() {
     // displays incorrect colors for the user to get wrong
     let n1, n2, n3;
@@ -28,6 +32,8 @@ function genWrong() {
     
 }
 function init() {
+    tries= 4;
+    updateTries();
     answer = colorPicker();
     color.textContent = answer;
     genSquareColors();
@@ -36,8 +42,13 @@ function init() {
 }
 init();
 
+function reload(){
+    document.location.reload();
+}
+
 function reset(){
-    tries = 3;
+    tries = 4;
+    updateTries();
     answer = colorPicker();
     color.textContent = answer;
     genSquareColors();
@@ -70,6 +81,11 @@ function setColor(){
     }
 
 } 
+function updateTries(){
+    
+    t.textContent = "Tries left: " + tries;
+
+}
 
 function colorSquares(){
     for(let i = 0; i < squares.length; i++){
@@ -78,10 +94,11 @@ function colorSquares(){
             if(clicked === answer){
                 alert("You won!");
                 reset();
-                this.style.backgroundColor = setColor();
+                // this.style.backgroundColor = setColor();
              } else {
                 this.style.backgroundColor = "#FFFFFF";
                 tries--;
+                updateTries();
             }
             if(tries === 0){
                 alert("You lost!");
