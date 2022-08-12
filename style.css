@@ -1,13 +1,13 @@
-.desc, #info {
+.desc, #info,#tries {
     text-align: center ;
 }
-#color{
+#color,#tries {
     text-align: center;
     font-size: 20px;
     font-weight: bold;
 }
 #container {
-	max-width: 600px;
+	max-width: 550px;
 	margin: 0 auto;
 	padding-top: 20px;
 
@@ -18,5 +18,28 @@
 	padding-bottom: 30%;
 	float: left;
 	margin: 1.5%;
+	transition: background .35s;
+
 	
 } 
+body{
+	background-color: white;
+}
+#mode {
+	
+	margin-left: 47.55%;
+	background-color: #f44336; 
+	border: none;
+	color: white;
+	padding: 12px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4
+	px 2px;
+	cursor: pointer;
+	border-radius: 8px;
+
+  }
+  
